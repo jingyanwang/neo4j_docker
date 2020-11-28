@@ -12,3 +12,8 @@ docker run -it \
 gaoyuanliang/yan_neo4j:1.0.1 \
 bash
 ```
+
+
+```bash
+neo4j: http://0.0.0.0:6779/
+```
