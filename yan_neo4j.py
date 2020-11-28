@@ -72,6 +72,8 @@ def ingest_knowledge_triplets_to_neo4j(triplets,
 			pass
 
 '''
+from yan_neo4j import * 
+
 neo4j_session = initialize_neo4j_session(http_port = "6779", bolt_port = "7484")
 
 t = [{
