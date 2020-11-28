@@ -18,6 +18,12 @@ t = [{
 ingest_knowledge_triplets_to_neo4j(t, neo4j_session)
 
 '''
-# neo4j: http://0.0.0.0:5967/
+neo4j: http://0.0.0.0:5967/
+
+bolt: bolt://0.0.0.0:3577
+
+user name: neo4j
+
+password: neo4j1
 '''
 ##########yan_neo4j_example.py##########
