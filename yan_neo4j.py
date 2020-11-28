@@ -87,6 +87,9 @@ t = [{
 }]
 ingest_knowledge_triplets_to_neo4j(t, neo4j_session)
 
+'''
 neo4j: http://0.0.0.0:6779/
+'''
+
 '''
 #######yan_neo4j.py#######
