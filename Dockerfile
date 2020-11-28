@@ -15,8 +15,6 @@ RUN apt-get install -y python3-pip
 RUN pip3 install neo4j==4.1.1
 RUN wget http://neo4j.com/artifact.php?name=neo4j-community-3.5.12-unix.tar.gz
 RUN tar -xf 'artifact.php?name=neo4j-community-3.5.12-unix.tar.gz'
-WORKDIR /neo4j-community-3.5.12/
-
 WORKDIR /
 
 ###download the codes
