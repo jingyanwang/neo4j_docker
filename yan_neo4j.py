@@ -3,7 +3,7 @@ import os
 import time
 from neo4j import *
 
-def initialize_neo4j_session(http_port, bolt_port):
+def start_neo4j(http_port, bolt_port):
 	###
 	os.system(u"""
 	rm /neo4j-community-3.5.12/conf/neo4j.conf
@@ -24,13 +24,12 @@ def initialize_neo4j_session(http_port, bolt_port):
 	/neo4j-community-3.5.12/bin/neo4j start
 	""")
 	####
+
+def create_neo4j_session(bolt_port):
 	while(True):
 		try:
 			neo4j_instance = GraphDatabase.driver("bolt://0.0.0.0:%s/"%(bolt_port), auth=('neo4j', 'neo4j1'))
 			neo4j_session = neo4j_instance.session()
-			neo4j_session.run(u"""
-			MATCH (n) OPTIONAL MATCH (n)-[r]-() DELETE n,r;
-			""")
 			break
 		except:
 			pass
@@ -72,9 +71,13 @@ def ingest_knowledge_triplets_to_neo4j(triplets,
 			pass
 
 '''
-from yan_neo4j import * 
+from yan_neo4j import start_neo4j
+from yan_neo4j import create_neo4j_session
+from yan_neo4j import ingest_knowledge_triplets_to_neo4j
 
-neo4j_session = initialize_neo4j_session(http_port = "6779", bolt_port = "7484")
+
+start_neo4j(http_port = "5967", bolt_port = "3577")
+neo4j_session = create_neo4j_session(bolt_port = "3577")
 
 t = [{
 'subject':"a",
@@ -87,6 +90,6 @@ t = [{
 }]
 ingest_knowledge_triplets_to_neo4j(t, neo4j_session)
 
-# neo4j: http://0.0.0.0:6779/
+# neo4j: http://0.0.0.0:5967/
 '''
 #######yan_neo4j.py#######
