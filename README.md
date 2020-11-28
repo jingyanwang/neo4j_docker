@@ -17,5 +17,7 @@ bash
 neo4j: http://0.0.0.0:6779/
 
 bolt: bolt://0.0.0.0:7484
+
 user name: neo4j
+
 password: neo4j1
