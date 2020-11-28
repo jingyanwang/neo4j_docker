@@ -1,7 +1,10 @@
 ##########yan_neo4j_example.py##########
-from yan_neo4j import * 
+from yan_neo4j import start_neo4j
+from yan_neo4j import create_neo4j_session
+from yan_neo4j import ingest_knowledge_triplets_to_neo4j
 
-neo4j_session = initialize_neo4j_session(http_port = "6779", bolt_port = "7484")
+start_neo4j(http_port = "5967", bolt_port = "3577")
+neo4j_session = create_neo4j_session(bolt_port = "3577")
 
 t = [{
 'subject':"a",
@@ -14,8 +17,7 @@ t = [{
 }]
 ingest_knowledge_triplets_to_neo4j(t, neo4j_session)
 
-
 '''
-# neo4j: http://0.0.0.0:6779/
+# neo4j: http://0.0.0.0:5967/
 '''
 ##########yan_neo4j_example.py##########
