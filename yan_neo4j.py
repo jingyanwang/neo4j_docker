@@ -7,7 +7,7 @@ def start_neo4j(http_port, bolt_port):
 	###
 	os.system(u"""
 	rm /neo4j-community-3.5.12/conf/neo4j.conf
-	echo "dbms.security.auth_enabled=true" > /neo4j-community-3.5.12/conf/neo4j.conf
+	echo "dbms.security.auth_enabled=false" > /neo4j-community-3.5.12/conf/neo4j.conf
 	echo "dbms.connectors.default_listen_address=0.0.0.0" >> /neo4j-community-3.5.12/conf/neo4j.conf
 	echo "dbms.connector.http.enabled=true" >> /neo4j-community-3.5.12/conf/neo4j.conf
 	echo "dbms.connector.http.address=0.0.0.0:%s" >> /neo4j-community-3.5.12/conf/neo4j.conf
@@ -74,7 +74,6 @@ def ingest_knowledge_triplets_to_neo4j(triplets,
 from yan_neo4j import start_neo4j
 from yan_neo4j import create_neo4j_session
 from yan_neo4j import ingest_knowledge_triplets_to_neo4j
-
 
 start_neo4j(http_port = "5967", bolt_port = "3577")
 neo4j_session = create_neo4j_session(bolt_port = "3577")
