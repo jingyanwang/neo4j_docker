@@ -3,26 +3,39 @@ import os
 import time
 from neo4j import *
 
-def start_neo4j(http_port, bolt_port):
+def start_neo4j(
+	http_port, 
+	bolt_port,
+	neo4j_path = '/'):
 	###
 	os.system(u"""
-	rm /neo4j-community-3.5.12/conf/neo4j.conf
-	echo "dbms.security.auth_enabled=false" > /neo4j-community-3.5.12/conf/neo4j.conf
-	echo "dbms.connectors.default_listen_address=0.0.0.0" >> /neo4j-community-3.5.12/conf/neo4j.conf
-	echo "dbms.connector.http.enabled=true" >> /neo4j-community-3.5.12/conf/neo4j.conf
-	echo "dbms.connector.http.address=0.0.0.0:%s" >> /neo4j-community-3.5.12/conf/neo4j.conf
-	echo "dbms.connector.bolt.enabled=true" >> /neo4j-community-3.5.12/conf/neo4j.conf
-	echo "dbms.connector.bolt.address=0.0.0.0:%s" >> /neo4j-community-3.5.12/conf/neo4j.conf
-	"""%(http_port,bolt_port))
+	rm %sneo4j-community-3.5.12/conf/neo4j.conf
+	echo "dbms.security.auth_enabled=false" > %sneo4j-community-3.5.12/conf/neo4j.conf
+	echo "dbms.connectors.default_listen_address=0.0.0.0" >> %sneo4j-community-3.5.12/conf/neo4j.conf
+	echo "dbms.connector.http.enabled=true" >> %sneo4j-community-3.5.12/conf/neo4j.conf
+	echo "dbms.connector.http.address=0.0.0.0:%s" >> %sneo4j-community-3.5.12/conf/neo4j.conf
+	echo "dbms.connector.bolt.enabled=true" >> %sneo4j-community-3.5.12/conf/neo4j.conf
+	echo "dbms.connector.bolt.address=0.0.0.0:%s" >> %sneo4j-community-3.5.12/conf/neo4j.conf
+	"""%(
+		neo4j_path,
+		neo4j_path,
+		neo4j_path,
+		neo4j_path,		
+		http_port,
+		neo4j_path,		
+		neo4j_path,	
+		bolt_port,
+		neo4j_path))
 	####
 	os.system(u"""
-	rm /neo4j-community-3.5.12/data/dbms/auth
-	/neo4j-community-3.5.12/bin/neo4j-admin set-initial-password neo4j1
-	""")
+	rm %sneo4j-community-3.5.12/data/dbms/auth
+	%sneo4j-community-3.5.12/bin/neo4j-admin set-initial-password neo4j1
+	"""%(neo4j_path,
+		neo4j_path))
 	####
 	os.system(u"""
-	/neo4j-community-3.5.12/bin/neo4j start
-	""")
+	%sneo4j-community-3.5.12/bin/neo4j start
+	"""%(neo4j_path))
 	####
 
 def create_neo4j_session(bolt_port):
