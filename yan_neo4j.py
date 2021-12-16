@@ -48,12 +48,14 @@ def create_neo4j_session(bolt_port):
 			pass
 	return neo4j_session
 
-def ingest_knowledge_triplets_to_neo4j(triplets,
+def ingest_knowledge_triplets_to_neo4j(
+	triplets,
 	neo4j_session,
 	delete_data = True):
-	neo4j_session.run(u"""
-	MATCH (n) OPTIONAL MATCH (n)-[r]-() DELETE n,r;
-	""")
+	if delete_data is True:
+		neo4j_session.run(u"""
+		MATCH (n) OPTIONAL MATCH (n)-[r]-() DELETE n,r;
+		""")
 	#######
 	unique_entities = list({item["entity_id"]: item for item in [{'entity_id': t['subject'], 
 		'entity_type': t['subject_type'], 
