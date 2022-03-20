@@ -14,9 +14,9 @@ python3 yan_neo4j_example.py
 ```
 
 
-neo4j: http://0.0.0.0:5967/
+neo4j: http://localhost:5967/browser/
 
-bolt: bolt://0.0.0.0:3577
+bolt: http://localhost:3577
 
 user name: neo4j
 
