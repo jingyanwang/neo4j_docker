@@ -21,9 +21,7 @@ WORKDIR /
 RUN echo "dgnkgkii"
 WORKDIR /
 
-RUN git clone https://github.com/yanliang12/yan_neo4j_docker.git
-RUN mv /yan_neo4j_docker/* ./
-RUN rm -r yan_neo4j_docker
-
-RUN rm Dockerfile*
+RUN git clone https://github.com/jingyanwang/neo4j_docker.git
+RUN mv /neo4j_docker/* ./
+RUN rm -r neo4j_docker
 ############Dockerfile###########
