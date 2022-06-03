@@ -41,16 +41,17 @@ def start_neo4j(
 	####
 
 def create_neo4j_session(bolt_port):
-	max_try_number = 100
+	max_try_number = 10000
 	try_number = 0
-	while(try_number <= max_try_number):
+	while(True):
 		try:
 			neo4j_instance = GraphDatabase.driver("bolt://0.0.0.0:%s/"%(bolt_port), auth=('neo4j', 'neo4j1'))
 			neo4j_session = neo4j_instance.session()
+			return neo4j_session
 			break
 		except:
 			try_number += 1
-	return neo4j_session
+	return None
 
 def ingest_knowledge_triplets_to_neo4j(
 	triplets,
