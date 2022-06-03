@@ -18,10 +18,11 @@ RUN tar -xf 'artifact.php?name=neo4j-community-3.5.12-unix.tar.gz'
 WORKDIR /
 
 ###download the codes
-RUN echo "dgnkgkii"
+RUN echo "d1gs1g2s52"
 WORKDIR /
 
 RUN git clone https://github.com/jingyanwang/neo4j_docker.git
 RUN mv /neo4j_docker/* ./
 RUN rm -r neo4j_docker
+
 ############Dockerfile###########
