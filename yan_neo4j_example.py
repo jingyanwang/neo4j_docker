@@ -13,15 +13,35 @@ neo4j_session = create_neo4j_session(
 	bolt_port = "3577",
 	)
 
-t = [{
-'subject':"a",
-'subject_type':"b",
-'subject_name':"c",
-'object':"d",
-'object_type':"e",
-'object_name':"f",
-'relation':"g",
-}]
+t = [
+	{
+	'subject':"jingyan",
+	'subject_type':"people",
+	'subject_name':"jingyan",
+	'object':"neo4j",
+	'object_type':"software",
+	'object_name':"neo4j",
+	'relation':"proficient_in",
+	},
+	{
+	'subject':"jingyan",
+	'subject_type':"people",
+	'subject_name':"jingyan",
+	'object':"cypher",
+	'object_type':"programming_langeuage",
+	'object_name':"cypher",
+	'relation':"proficient_in",
+	},
+	{
+	'subject':"jingyan",
+	'subject_type':"people",
+	'subject_name':"jingyan",
+	'object':"dr",
+	'object_type':"title",
+	'object_name':"dr.",
+	'relation':"has_title",
+	},
+]
 ingest_knowledge_triplets_to_neo4j(t, neo4j_session)
 
 '''
