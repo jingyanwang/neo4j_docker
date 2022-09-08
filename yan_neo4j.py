@@ -63,6 +63,7 @@ def ingest_knowledge_triplets_to_neo4j(
 		MATCH (n) OPTIONAL MATCH (n)-[r]-() DELETE n,r;
 		""")
 	#######
+	'''
 	unique_entities = list({item["entity_id"]: item for item in [{'entity_id': t['subject'], 
 		'entity_type': t['subject_type'], 
 		'entity_name': t['subject_name']} 
@@ -78,9 +79,21 @@ def ingest_knowledge_triplets_to_neo4j(
 			"""%(e['entity_type'], e['entity_name'], e['entity_id']))
 		except:
 			pass
+	'''
 	#####
 	for t in triplets:
 		try:
+			## insert the subject node
+			neo4j_session.run(u"""
+				MERGE (n:%s { value: '%s', id: '%s' });
+				"""%(t['subject_type'], t['subject_name'], t['subject']))
+
+			## insert the object node
+			neo4j_session.run(u"""
+				MERGE (n:%s { value: '%s', id: '%s' });
+				"""%(t['object_type'], t['object_name'], t['object']))
+
+			## insert the edge
 			neo4j_session.run(
 			u"""
 			MATCH (a:%s),(b:%s) WHERE a.id = '%s' AND b.id = '%s' 
