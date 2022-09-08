@@ -3,7 +3,7 @@
 ## pull the docker image
 
 ```bash
-docker pull jingyanwang1/neo4j:1.0.1
+docker pull jingyanwang1/neo4j:1.0.3
 ```
 
 ## start the docker
@@ -12,7 +12,7 @@ docker pull jingyanwang1/neo4j:1.0.1
 docker run -it ^
 -p 5967:5967 ^
 -p 3577:3577 ^
-jingyanwang1/neo4j:1.0.1 ^
+jingyanwang1/neo4j:1.0.3 ^
 bash
 ```
 
