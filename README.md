@@ -26,7 +26,7 @@ python3 yan_neo4j_example.py
 
 neo4j: http://localhost:5967/browser/
 
-<img src="WeChat%20Screenshot_20220320193129.png" width="500">
+<img src="WeChat%20Screenshot_20220908123856.png" width="500">
 
 ## the username and pasword (if needed)
 
