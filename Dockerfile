@@ -18,7 +18,7 @@ RUN tar -xf 'artifact.php?name=neo4j-community-3.5.12-unix.tar.gz'
 WORKDIR /
 
 ###download the codes
-RUN echo "d1gs1g2s52"
+RUN echo "sd1gs2g1s2"
 WORKDIR /
 
 RUN git clone https://github.com/jingyanwang/neo4j_docker.git
